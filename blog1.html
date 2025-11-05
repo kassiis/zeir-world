@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Worldbuilding — The Great Realm</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0f1724;
+    --card:#0f1724;
+    --glass: rgba(255,255,255,0.04);
+    --muted: #9aa4b2;
+    --accent:#e0b84a; /* gold */
+    --accent-2:#9fd3c7; /* teal hint */
+    --text:#e6eef6;
+    --radius:14px;
+    --max-width:1100px;
+  }
+  /* Reset-ish */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,#071022 0%, #081428 40%, #071827 100%);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+    padding:32px 18px;
+    display:flex;
+    justify-content:center;
+  }
+
+  .container{
+    width:100%;
+    max-width:var(--max-width);
+    margin:0 auto;
+  }
+
+  header{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    justify-content:space-between;
+    margin-bottom:26px;
+  }
+  .brand{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    text-decoration:none;
+    color:var(--text);
+  }
+  .logo{
+    width:64px;
+    height:64px;
+    border-radius:12px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 12%),
+      linear-gradient(135deg, rgba(255,200,90,0.16), rgba(160,220,200,0.06));
+    display:grid;
+    place-items:center;
+    font-weight:800;
+    font-family: Merriweather, serif;
+    color:var(--accent);
+    font-size:20px;
+    box-shadow: 0 6px 24px rgba(2,6,23,0.7), inset 0 -6px 12px rgba(255,255,255,0.02);
+  }
+  nav{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+  .btn{
+    background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.04);
+    padding:10px 14px;
+    border-radius:10px;
+    color:var(--text);
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+  }
+  .btn.primary{
+    background: linear-gradient(180deg, rgba(224,184,74,0.12), rgba(224,184,74,0.06));
+    border-color: rgba(224,184,74,0.2);
+    color: #071027;
+    box-shadow: 0 6px 18px rgba(224,184,74,0.06);
+  }
+
+  /* Hero */
+  .hero{
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:28px;
+    align-items:start;
+    margin-bottom:28px;
+  }
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:var(--radius);
+    padding:22px;
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  }
+
+  h1{
+    font-family: Merriweather, serif;
+    font-weight:700;
+    font-size:28px;
+    margin:0 0 8px 0;
+    color:var(--text);
+  }
+  p.lead{
+    margin:0 0 18px 0;
+    color:var(--muted);
+    font-size:15px;
+  }
+
+  .meta{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .pill{
+    background:var(--glass);
+    padding:8px 10px;
+    border-radius:999px;
+    font-size:13px;
+    color:var(--muted);
+    border:1px solid rgba(255,255,255,0.02);
+  }
+
+  /* Right aside small doc */
+  .aside h3{ margin:0 0 10px 0; font-size:16px; }
+  .aside .download{
+    display:grid;
+    gap:8px;
+  }
+  .download a{ display:inline-block; text-decoration:none; }
+
+  /* Grid of features / sections */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:16px;
+    margin-top:18px;
+  }
+  .section-title{
+    font-weight:700;
+    font-size:15px;
+    margin-bottom:8px;
+    color:var(--accent);
+  }
+  .muted{
+    color:var(--muted);
+    font-size:14px;
+  }
+
+  /* Hierarchy chart */
+  .hierarchy{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:8px;
+  }
+  .rank{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 12px;
+    border-radius:10px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.0));
+    border:1px solid rgba(255,255,255,0.03);
+  }
+  .rank b{ min-width:110px; display:inline-block; color:var(--text); }
+  .rank small{ color:var(--muted) }
+
+  footer{
+    margin-top:28px;
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    opacity:0.95;
+  }
+
+  /* responsive */
+  @media (max-width:980px){
+    .hero{ grid-template-columns: 1fr; }
+    .grid{ grid-template-columns: 1fr; }
+    .logo{ width:56px; height:56px; font-size:18px }
+  }
+
+  /* small print / accessibility */
+  a:focus{ outline:3px solid rgba(159,211,199,0.18); outline-offset:3px; border-radius:8px; }
+  @media print{
+    body{ background: white; color: black; padding:0; }
+    .card{ box-shadow:none; border:0; background:transparent; }
+    header nav, .download a{ display:none; }
+  }
+</style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <a class="brand" href="#" aria-label="Project Home">
+        <div class="logo">ZR</div>
+        <div>
+          <div style="font-weight:700">The Great Realm</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px">Worldbuilding Reference — "ظلّ الزير"</div>
+        </div>
+      </a>
+
+      <nav aria-label="Primary">
+        <a class="btn" href="#overview">Overview</a>
+        <a class="btn" href="#hierarchy">Hierarchy</a>
+        <a class="btn" href="#schools">Schools</a>
+        <a class="btn primary" href="#download">Download PDF</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <article class="card" id="overview" aria-labelledby="overview-title">
+        <h1 id="overview-title">Dossier — النظام و المدارس العظيمة</h1>
+        <p class="lead">A compact, navigable reference of the kingdom: governance, noble ranks, administrative divisions, and the schools that shaped its thought — crafted to be used by writers, artists, and game designers.</p>
+
+        <div class="meta" aria-hidden="true">
+          <div class="pill">Author: Youssef</div>
+          <div class="pill">Setting: High-mana feudal realm</div>
+          <div class="pill">Format: Modular • Printable</div>
+        </div>
+
+        <div class="grid" style="margin-top:18px">
+          <div>
+            <div class="section-title">Quick summary</div>
+            <div class="muted">A Sultanate with semi-feudal dukes controlling great domains, a central Diwan (Senate), and a layered administration down to municipal supervisors. Schools replace religion as institutions of thought.</div>
+          </div>
+
+          <div>
+            <div class="section-title">Why it exists</div>
+            <div class="muted">To let creators explore political dynamics, slow-changing cultures due to long lifespans, and the interplay between arcane power (الزير) and governance.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px">
+          <div class="section-title">Usage</div>
+          <ul style="margin:8px 0 0 18px;color:var(--muted);line-height:1.6">
+            <li>Reference for dialogue, protocols, and ceremonies.</li>
+            <li>Framework for factional conflicts and plots.</li>
+            <li>Source material for art assets and tabletop campaigns.</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="card aside" id="download" aria-labelledby="download-title">
+        <h3 id="download-title">Official document</h3>
+        <p class="muted">Download the structured PDF version to include in your writer's bible or share with collaborators.</p>
+        <div class="download" style="margin-top:12px">
+          <a class="btn primary" href="#" onclick="alert('Replace this link with your generated PDF path')" role="button">⬇️ Download PDF</a>
+          <a class="btn" href="#" onclick="alert('Open printable view')">Print view</a>
+        </div>
+
+        <div style="margin-top:18px">
+          <div class="section-title">Key contacts</div>
+          <div class="muted">Da'i (Prime Minister), Agha (Commander), Master of Schools — roles you can include in scenes.</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="card" id="hierarchy" aria-labelledby="hierarchy-title" style="margin-bottom:18px">
+      <h2 id="hierarchy-title" style="margin-top:0">Hierarchy & Administrative Map</h2>
+      <p class="muted">Clear chain of command and noble ranks.</p>
+
+      <div class="hierarchy" role="list" aria-label="Chain of command">
+        <div class="rank" role="listitem"><b>السلطان — Sultan</b><small>• Supreme ruler, issues decrees</small></div>
+        <div class="rank" role="listitem"><b>الديوان — Diwan (Senate)</b><small>• Council of dukes & advisors</small></div>
+        <div class="rank" role="listitem"><b>الداي — Da'i (Minister)</b><small>• Chief administrator</small></div>
+        <div class="rank" role="listitem"><b>الآغا — Agha (General)</b><small>• Military commander</small></div>
+        <div class="rank" role="listitem"><b>بايلم — Baylim (Domain steward)</b><small>• Oversees an iqta' / fief</small></div>
+        <div class="rank" role="listitem"><b>زيخ — Zikh (Governor/Chief)</b><small>• Province / tribal leader</small></div>
+        <div class="rank" role="listitem"><b>مشرف — Supervisor</b><small>• Town / municipal manager</small></div>
+      </div>
+
+      <div style="margin-top:14px" class="grid">
+        <div>
+          <div class="section-title">Nobility tiers</div>
+          <p class="muted"><strong>دوق (Duke)</strong> — regional lord; <strong>دون (Don)</strong> — provincial noble; <strong>فون (Von)</strong> — city noble, distant from court.</p>
+        </div>
+        <div>
+          <div class="section-title">Administrative notes</div>
+          <p class="muted">Some provinces are managed directly by the central state (the capital, mana-rich regions). Local stewards retain traditional rights but owe tribute & men-at-arms.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="schools" aria-labelledby="schools-title">
+      <h2 id="schools-title" style="margin-top:0">The Great Schools (المدارس العظيمة)</h2>
+      <p class="muted">Cultural institutions that function like religions, universities, and martial orders combined.</p>
+
+      <div class="grid" style="margin-top:12px">
+        <div>
+          <div class="section-title">Types</div>
+          <p class="muted"><strong>فنية</strong> — magical / mana cultivation. <strong>قتالية</strong> — martial mastery. <strong>مختلطة</strong> — unified schools that combine both.</p>
+        </div>
+
+        <div>
+          <div class="section-title">Societal role</div>
+          <p class="muted">They educate state officials, grant prestige, and function as political actors. Each school has archives, training grounds, and often a patron noble house.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:12px" class="section-title">Example entries</div>
+      <div style="margin-top:8px" class="muted">
+        <strong>School of the Quiet Blade</strong> — Fighting school focused on slow, precise techniques and conditioning.<br>
+        <strong>River of Golden Thought</strong> — A mana school famous for agricultural & artisan spells.<br>
+      </div>
+    </section>
+
+    <footer>
+    <p>
+        © 2024 The Great Realm. Created by Youssef. All rights reserved.
+    </p>
+    </footer>
+</body>
+</html>

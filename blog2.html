@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>قالب العالم الخيالي — دليل بصري</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa5b1;
+      --accent:#c7a35b;
+      --glass: rgba(255,255,255,0.04);
+      --radius:12px;
+      --maxw:1100px;
+      --gap:18px;
+      --accent-2:#7bd389;
+      --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font-sans);
+      background:linear-gradient(180deg,#071021 0%, var(--bg) 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px 20px;
+      line-height:1.45;
+    }
+
+    .container{
+      max-width:var(--maxw);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:var(--gap);
+    }
+
+    header{
+      background:linear-gradient(90deg, rgba(199,163,91,0.06), rgba(123,211,137,0.03));
+      border-radius:16px;
+      padding:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+    }
+    .brand{
+      display:flex;gap:12px;align-items:center
+    }
+    .logo{
+      width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#8f6b35);display:flex;align-items:center;justify-content:center;font-weight:800;color:#081018;font-size:20px;box-shadow:0 6px 18px rgba(199,163,91,0.12);
+    }
+    .title{font-weight:700;font-size:18px}
+    .subtitle{color:var(--muted);font-size:13px}
+
+    nav a{color:var(--muted);text-decoration:none;margin-left:12px}
+    nav a.primary{color:var(--bg);background:var(--accent);padding:10px 14px;border-radius:10px;font-weight:600}
+
+    .hero{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;padding:26px;display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:center;box-shadow: inset 0 -1px 0 rgba(255,255,255,0.02);
+    }
+    .hero h1{margin:0;font-size:26px}
+    .hero p{margin:10px 0;color:var(--muted)}
+    .cta{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn.primary{background:var(--accent);color:#071018}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow: 0 8px 30px rgba(2,6,23,0.6)}
+
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+    .feature{padding:16px;border-radius:12px;background:linear-gradient(180deg,var(--glass),transparent);}
+    .feature h3{margin:6px 0}
+    .meta{color:var(--muted);font-size:13px}
+
+    .grid-2{display:grid;grid-template-columns:1fr 360px;gap:var(--gap)}
+
+    .hierarchy{display:flex;flex-direction:column;gap:10px}
+    .level{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:linear-gradient(90deg, rgba(255,255,255,0.01), transparent)}
+    .badge{min-width:96px;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.03);font-weight:700;text-align:center}
+    .desc{color:var(--muted);font-size:13px}
+
+    footer{display:flex;justify-content:space-between;align-items:center;padding:12px;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    /* Small helper styles for RTL cards */
+    .kicker{color:var(--accent);font-weight:700}
+
+    /* Accessibility */
+    a:focus, button:focus{outline:2px solid rgba(199,163,91,0.24);outline-offset:3px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">ز</div>
+        <div>
+          <div class="title">مركز بناء العوالم — Atlas</div>
+          <div class="subtitle">قوالب وقصص وأنظمة جاهزة للاستيراد</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#features">الموارد</a>
+        <a href="#hierarchy">نظام الحكم</a>
+        <a class="primary" href="#download">تحميل القالب</a>
+      </nav>
+    </header>
+
+    <section class="hero card" role="region" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">قالب بصري لبناء العالم — جاهز للتخصيص</h1>
+        <p>قالب أنيق يدعم العربية (RTL) ويحتوي على مكوّنات تُعرض النظام الحاكم، المدارس الفكرية، والموارد السردية. استخدمه كأساس ثم ألصق قالب HTML الخاص بك لأعمل على تكييف التصميم.</p>
+        <div class="cta">
+          <button class="btn primary">استخدم القالب</button>
+          <button class="btn ghost">اطلب تخصيصًا</button>
+        </div>
+      </div>
+      <aside class="card">
+        <h3 class="kicker">نص سريع</h3>
+        <p class="meta">ملخص بصري لنظامك: السلطان ← الديوان ← الداي ← الآغا ← بايلم ← زيخ ← مشرف</p>
+        <hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:12px 0">
+        <p style="font-size:13px;color:var(--muted)">قم بلصق HTML الخاص بك في المكان المخصص وسأعيد تنسيقه، أو أعطني توجيهات لتخصيص الألوان، الطباعات، والرموز.</p>
+      </aside>
+    </section>
+
+    <section id="features" class="card">
+      <h2>مكونات القالب</h2>
+      <div class="features" aria-hidden="false">
+        <div class="feature">
+          <h3>عرض هرمي</h3>
+          <p class="meta">قائمة مرئية لتسلسل السلطة مع أوصاف قابلة للتعديل.</p>
+        </div>
+        <div class="feature">
+          <h3>بطاقات المدارس</h3>
+          <p class="meta">عرض للمدارس العظيمة: القتالية والفنية والمختلطة، مع حصص ومناهج افتراضية.</p>
+        </div>
+        <div class="feature">
+          <h3>موارد قابلة للتحميل</h3>
+          <p class="meta">تصدير كـ PDF، JSON للافتراضات، أو assets للرسوم التوضيحية.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="hierarchy" class="card grid-2">
+      <div>
+        <h2>نظام الحكم — مخطط هرمي</h2>
+        <div class="hierarchy">
+          <div class="level"><div class="badge">السلطان</div><div class="desc">رأس الدولة، حامل لقب "ظلّ الزير".</div></div>
+          <div class="level"><div class="badge">الديوان</div><div class="desc">مجلس الشيوخ والاستشارة.</div></div>
+          <div class="level"><div class="badge">الداي</div><div class="desc">الوزير الأعظم، يدير الدواوين.</div></div>
+          <div class="level"><div class="badge">الآغا</div><div class="desc">القائد العسكري العام.</div></div>
+          <div class="level"><div class="badge">بايلم</div><div class="desc">مشرف الإقطاعية.</div></div>
+          <div class="level"><div class="badge">زيخ</div><div class="desc">مشرف المحافظة أو شيخ القبيلة.</div></div>
+          <div class="level"><div class="badge">مشرف</div><div class="desc">مدير المدينة أو البلدة.</div></div>
+        </div>
+      </div>
+      <aside class="card">
+        <h3>تعليمات سريعة للصق قالبك</h3>
+        <ol style="color:var(--muted);font-size:14px;line-height:1.6;padding-left:16px">
+          <li>ألصق الـ HTML الخاص بك داخل عنصر &lt;main id=\"custom\"&gt; في هذا الملف أو أرسله لي لأقوم بالدمج.</li>
+          <li>إذا كان القالب يستخدم مكتبات خارجية (Bootstrap, Tailwind) أخبرني لأحافظ على التوافق.</li>
+          <li>حدد الألوان والخطوط المُفضلة، وسأقوم بتطبيقها على النظام فورًا.</li>
+        </ol>
+        <div style="margin-top:12px"><strong class="kicker">ملاحظة:</strong> أضمن استجابة جيدة للعرض على الهواتف والترجمات العربية.</div>
+      </aside>
+    </section>
+
+    <footer class="card">
+      <div>© مركز بناء العوالم — قالب نموذجي</div>
+      <div style="color:var(--muted)">هل تريد تخصيص الألوان أو الإخراج لطباعة؟ أرسل قالبك الآن.</div>
+    </footer>
+
+    <!-- مكان مخصص للصق القالب المرسَل من طرف المستخدم -->
+    <main id="custom" style="display:none"></main>
+  </div>
+</body>
+</html>
